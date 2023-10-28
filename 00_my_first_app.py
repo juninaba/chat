@@ -54,7 +54,6 @@ def main():
     if user_input := st.chat_input("聞きたいことを入力してね！"):
         st.session_state.messages.append(HumanMessage(content=user_input))
         with st.spinner("ChatGPT is typing ..."):
-            # response = llm(st.session_state.messages)
             answer, cost = get_answer(llm, st.session_state.messages)
         # ChatGPT APIはステートレスなAPIのため、毎回、チャットの履歴を送信しないと適切な返答を得られない
         st.session_state.messages.append(AIMessage(content=answer))
